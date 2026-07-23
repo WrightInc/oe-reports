@@ -388,6 +388,35 @@ td.yard{font-weight:700;color:var(--navy);text-align:right;}
 .tick .bar{width:10px;height:38px;border-radius:6px;flex-shrink:0;}
 .tick span{font-size:22px;font-weight:700;color:#fff;}
 .close .while{max-width:860px;margin:38px auto 0;text-align:center;background:linear-gradient(135deg,rgba(2,148,73,.30),rgba(2,148,73,.10));border:2px solid var(--green);border-radius:18px;padding:24px 34px;color:#fff;font-weight:800;font-size:22px;line-height:1.4;}
+/* ===== matching-engine section ===== */
+.mflow{display:flex;align-items:stretch;gap:14px;margin-top:30px;}
+.mflow .mnode{flex:1;min-width:0;background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.14);border-radius:16px;padding:20px 22px;display:flex;flex-direction:column;justify-content:center;}
+.mflow .mnode .ml{color:#fff;font-weight:800;font-size:16.5px;line-height:1.25;}
+.mflow .mnode .mt{color:#9fb0d6;font-size:12.5px;margin-top:6px;font-weight:700;letter-spacing:.4px;text-transform:uppercase;}
+.mflow .mnode.eng{background:linear-gradient(135deg,rgba(1,171,238,.30),rgba(2,148,73,.16));border-color:rgba(1,171,238,.95);animation:engglow 2.4s ease-in-out infinite;}
+@keyframes engglow{0%,100%{box-shadow:0 0 0 1px rgba(1,171,238,.45),0 0 18px rgba(1,171,238,.45),0 0 40px rgba(1,171,238,.20);}50%{box-shadow:0 0 0 1px rgba(1,171,238,.75),0 0 30px rgba(1,171,238,.75),0 0 66px rgba(1,171,238,.42);}}
+@media(prefers-reduced-motion:reduce){.mflow .mnode.eng{animation:none;box-shadow:0 0 24px rgba(1,171,238,.55);}}
+.mflow .mnode.out{background:linear-gradient(135deg,rgba(2,148,73,.26),rgba(2,148,73,.08));border-color:rgba(2,148,73,.6);}
+.mflow .marw{flex:0 0 auto;align-self:center;color:#6f83b3;}
+@media(max-width:860px){.mflow{flex-direction:column;gap:10px;}.mflow .marw{transform:rotate(90deg);margin:0 auto;}}
+.mgrid{display:grid;grid-template-columns:repeat(4,1fr);gap:18px;margin-top:20px;}
+@media(max-width:920px){.mgrid{grid-template-columns:repeat(2,1fr);}}
+@media(max-width:560px){.mgrid{grid-template-columns:1fr;}}
+.mc{position:relative;background:linear-gradient(180deg,rgba(255,255,255,.07),rgba(255,255,255,.035));border:1px solid rgba(255,255,255,.13);border-radius:16px;padding:24px 22px 22px;overflow:hidden;transition:transform .25s ease,border-color .25s ease,box-shadow .25s ease;}
+.mc::before{content:'';position:absolute;left:0;top:0;bottom:0;width:4px;background:var(--ac);}
+.mc:hover{transform:translateY(-5px);border-color:var(--ac);box-shadow:0 14px 34px rgba(0,0,0,.28);}
+.mc .mic{width:48px;height:48px;border-radius:13px;display:flex;align-items:center;justify-content:center;margin-bottom:16px;}
+.mc h3{color:#fff;font-size:17.5px;line-height:1.25;margin-bottom:9px;}
+.mc p{color:#cfd9f2;font-size:14.5px;line-height:1.5;}
+.mc .mkey{display:inline-block;margin-top:12px;font-size:12px;font-weight:800;letter-spacing:.6px;text-transform:uppercase;color:var(--ac);}
+.massure{display:flex;gap:22px;align-items:center;margin-top:24px;background:linear-gradient(135deg,rgba(234,176,67,.15),rgba(234,176,67,.045));border:1.5px solid rgba(234,176,67,.6);border-radius:20px;padding:26px 30px;}
+.massure .msh{flex:0 0 auto;width:62px;height:62px;border-radius:16px;background:rgba(234,176,67,.18);display:flex;align-items:center;justify-content:center;}
+.massure p{color:#e8eefb;font-size:17px;line-height:1.55;margin:0;}
+.massure b{color:#fff;font-weight:800;}
+.massure strong{color:var(--amber);font-weight:900;}
+@media(max-width:600px){.massure{flex-direction:column;text-align:center;gap:16px;padding:24px 20px;}}
+.costnote{max-width:960px;margin:30px 0 0;padding:22px 30px;border-left:5px solid var(--amber);background:rgba(234,176,67,.08);border-radius:0 14px 14px 0;color:#c6d1ec;font-size:16.5px;line-height:1.62;}
+.costnote strong{color:#fff;font-weight:800;}
 </style>
 </head>
 <body>
@@ -503,6 +532,72 @@ td.yard{font-weight:700;color:var(--navy);text-align:right;}
       <div class="card"><div class="pphead">OE's People</div>
         <ul><li><strong>Safety</strong></li><li><strong>Customers</strong></li><li><strong>Decisions</strong></li>
         <li>Less time typing and sorting</li></ul></div>
+    </div>
+  </div>
+</section>
+
+<section class="dark" style="padding-top:0;">
+  <div class="wrap">
+    <div class="kick" style="color:var(--amber);">Future Development — this work is next</div>
+    <h2>OE's rules automatically assign every job to the right crew, unit, and equipment</h2>
+    <p class="sub">When work lands, OE's AI weighs it against the rules OE has set and matches it to the right people, crew, unit, and equipment — in seconds, and only ever on those rules.</p>
+
+    <!-- input → engine → output -->
+    <div class="mflow rv">
+      <div class="mnode in">
+        <span class="ml">A job comes in</span>
+        <span class="mt">Email · call · form</span>
+      </div>
+      <svg class="marw" width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><line x1="4" y1="12" x2="19" y2="12"/><polyline points="13,6 20,12 13,18"/></svg>
+      <div class="mnode eng">
+        <span class="ml">OE's rule engine weighs it</span>
+        <span class="mt">Only ever on OE's rules</span>
+      </div>
+      <svg class="marw" width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><line x1="4" y1="12" x2="19" y2="12"/><polyline points="13,6 20,12 13,18"/></svg>
+      <div class="mnode out">
+        <span class="ml">Right crew · unit · equipment</span>
+        <span class="mt">Matched in seconds</span>
+      </div>
+    </div>
+
+    <!-- four criteria -->
+    <div class="mgrid">
+      <div class="mc rv" style="--ac:var(--blue);">
+        <div class="mic" style="background:rgba(1,171,238,.16);">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="var(--blue)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="6"/><path d="M8.2 13.5 7 22l5-3 5 3-1.2-8.5"/></svg>
+        </div>
+        <h3>Training &amp; competency</h3>
+        <p>Only work a person or crew is trained, certified, and approved for — including competency on specific assets and equipment.</p>
+      </div>
+      <div class="mc rv" style="--ac:var(--green);">
+        <div class="mic" style="background:rgba(2,148,73,.16);">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="var(--green)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M22 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+        </div>
+        <h3>Experience &amp; crew type</h3>
+        <p>Single operators vs. two-man crews — and who's approved on which assets.</p>
+      </div>
+      <div class="mc rv" style="--ac:var(--amber);">
+        <div class="mic" style="background:rgba(234,176,67,.18);">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="var(--amber)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="8" y="2" width="8" height="4" rx="1"/><path d="M16 4h2a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h2"/><path d="M9 13l2 2 4-4"/></svg>
+        </div>
+        <h3>Customer rules</h3>
+        <p>Preferred employees on a Customer's jobsites, customer-specific requirements, and <strong style="color:#fff;">"do not assign"</strong> lists.</p>
+      </div>
+      <div class="mc rv" style="--ac:var(--violet);">
+        <div class="mic" style="background:rgba(155,109,232,.18);">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="var(--violet)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="6" cy="19" r="3"/><path d="M9 19h8.5a3.5 3.5 0 0 0 0-7h-11a3.5 3.5 0 0 1 0-7H15"/><circle cx="18" cy="5" r="3"/></svg>
+        </div>
+        <h3>Cost-effective routing</h3>
+        <p>Assigning by geography and efficiency — keeping East-GTA work with East-GTA crews instead of sending them across town.</p>
+      </div>
+    </div>
+
+    <!-- assurance -->
+    <div class="massure rv">
+      <div class="msh">
+        <svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="var(--amber)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2 4 5v6c0 5 3.5 8.5 8 10 4.5-1.5 8-5 8-10V5l-8-3z"/><path d="M9 12l2 2 4-4"/></svg>
+      </div>
+      <p><strong>Built for exactly this.</strong> OE's crews, training, and equipment are complex — and the engine can hold every layer of it, down to <b>customer-specific requirements</b> and <b>"do not assign" lists</b>. It runs <b>quickly, with little to no error — and only ever on the rules OE has put in place.</b></p>
     </div>
   </div>
 </section>
@@ -880,6 +975,7 @@ td.yard{font-weight:700;color:var(--navy);text-align:right;}
       <span class="chip g">Safety checked on every job</span>
       <span class="chip g">Customers answered immediately</span>
     </div>
+    <p class="costnote rv">This project is based upon Darren's current contract. Any external costs — for example, Nylus providing costs to integrate with OE's systems — will be evaluated through an investigative meeting. As this work progresses, a full BA analysis will be maintained as living documents, prioritized using the <strong>MoSCoW method</strong>⁸ — <strong>Must have, Should have, Could have, Won't have.</strong></p>
   </div>
 </section>
 
@@ -927,6 +1023,7 @@ td.yard{font-weight:700;color:var(--navy);text-align:right;}
       <li>Plain-language access to live scheduling data is current field service capability (2026).</li>
       <li>Field service platform data and AI route-optimization industry results (2026). Reported results from other organizations — not OE projections.</li>
       <li>Gartner, 2026.</li>
+      <li>MoSCoW method — a standard prioritization approach: Must have, Should have, Could have, Won't have. <a href="https://en.wikipedia.org/wiki/MoSCoW_method" style="color:#9fdcff;" target="_blank" rel="noopener">en.wikipedia.org/wiki/MoSCoW_method</a></li>
     </ol>
     <div class="legal">© 2026 OE Utility Services. All Rights Reserved. · Confidential</div>
   </div>
