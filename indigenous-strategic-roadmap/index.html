@@ -9,7 +9,8 @@
 html,body{background:#fff;}
 body{font-family:'Segoe UI',system-ui,-apple-system,Arial,sans-serif;color:var(--ink);}
 .slide{background:#fff;}
-.stage{position:relative;width:1600px;height:590px;margin:0 auto;}
+.stagewrap{overflow:hidden;display:flex;justify-content:center;}
+.stage{position:relative;width:1600px;height:590px;margin:0 auto;transform-origin:top center;}
 
 /* ---------- header ---------- */
 .grad{background:linear-gradient(90deg,var(--navy),var(--blue) 45%,var(--green) 72%,var(--amber));}
@@ -39,6 +40,50 @@ body{font-family:'Segoe UI',system-ui,-apple-system,Arial,sans-serif;color:var(-
 .foot .legal{margin:16px 40px 0;padding-top:13px;border-top:1px solid rgba(255,255,255,.14);text-align:center;color:#7385a8;font-size:12px;}
 
 /* ---------- legend ---------- */
+
+
+/* ================= MOBILE ================= */
+.mstack{display:none;}
+@media (max-width:1500px){
+  .stage{display:none;}
+  .mstack{display:block;padding:4px 0 8px;}
+  .wrapc{padding:0 20px;}
+  .titleblk{padding:22px 0 20px;}
+  .titleblk h1{font-size:27px;line-height:1.15;}
+  .titleblk .sub{font-size:13.5px;margin-top:9px;}
+  .legend{flex-wrap:wrap;gap:12px 20px;margin-top:16px;}
+  .legend > span{font-size:12.5px;}
+  .hdrbar img{height:32px;}
+  .mstack ol{list-style:none;position:relative;padding-left:52px;}
+  .mstack ol::before{content:'';position:absolute;left:17px;top:10px;bottom:10px;width:10px;border-radius:6px;background:#d9dfe7;}
+  .mstep{position:relative;padding:0 0 26px;}
+  .mstep .mn{position:absolute;left:-52px;top:0;width:38px;height:38px;border-radius:50%;background:#fff;
+             display:flex;align-items:center;justify-content:center;font-weight:800;font-size:15px;color:#3a4657;}
+  .mstep.p1 .mn{box-shadow:0 0 0 4px var(--blue);}
+  .mstep.p2 .mn{box-shadow:0 0 0 4px var(--green);}
+  .mstep.p3 .mn{box-shadow:0 0 0 4px var(--amber);}
+  .mstep .mq{font-size:13px;font-weight:800;font-style:italic;color:#3a4657;padding-top:7px;}
+  .mstep .mt{font-size:13.5px;font-style:italic;color:#3a4657;line-height:1.45;margin-top:5px;}
+  .mstep .mt b{font-weight:700;}
+  .foot{padding:22px 0 16px;}
+  .foot .brand img{height:30px;}
+  .foot .legal{margin:14px 20px 0;font-size:11.5px;}
+}
+@media (min-width:700px) and (max-width:1500px){
+  .mstack ol{padding-left:64px;max-width:1000px;}
+  .mstack ol::before{left:21px;}
+  .mstep{padding-bottom:30px;}
+  .mstep .mn{left:-64px;width:44px;height:44px;font-size:17px;}
+  .mstep .mq{font-size:14px;}
+  .mstep .mt{font-size:15px;line-height:1.5;}
+  .titleblk h1{font-size:34px;}
+  .titleblk .sub{font-size:15px;}
+}
+@media (max-width:420px){
+  .titleblk h1{font-size:23px;}
+  .mstack ol{padding-left:46px;}
+  .mstep .mn{left:-46px;width:34px;height:34px;font-size:14px;}
+}
 
 /* ---------- road ---------- */
 .roadsvg{position:absolute;left:0;top:0;width:1600px;height:590px;}
@@ -87,6 +132,7 @@ body{font-family:'Segoe UI',system-ui,-apple-system,Arial,sans-serif;color:var(-
     </div>
   </div>
 
+  <div class="stagewrap">
   <div class="stage">
   <!-- ================= ROAD ================= -->
   <svg class="roadsvg" viewBox="0 0 1600 590" preserveAspectRatio="none" aria-hidden="true">
@@ -191,7 +237,27 @@ body{font-family:'Segoe UI',system-ui,-apple-system,Arial,sans-serif;color:var(-
     <div class="txt"><b>Project Closeout and Roadmap Handover.</b> Final roadmap and measurable outcomes presented to the Board of Directors.</div>
   </div>
 
-  </div><!-- /stage -->
+  </div></div><!-- /stage -->
+
+  <div class="mstack">
+    <div class="wrapc">
+      <ol>
+      <li class="mstep p1"><div class="mn">1</div><div class="mq">Weeks 1&ndash;2</div><div class="mt"><b>Project Kick-off and Governance Setup.</b> Formal project initiation meeting with OE leadership; project steering committee established.</div></li>
+      <li class="mstep p1"><div class="mn">2</div><div class="mq">Weeks 3&ndash;5</div><div class="mt"><b>Internal Capacity &amp; Sentiment Assessment.</b> Five structured, anonymous interviews with a cross-section of employees; internal baseline survey distributed.</div></li>
+      <li class="mstep p1"><div class="mn">3</div><div class="mq">Weeks 6&ndash;7</div><div class="mt"><b>Documentation and Policy Audit.</b> Review of existing human resources policies and onboarding materials; parent-company Indigenous policies reviewed for scalability.</div></li>
+      <li class="mstep p1"><div class="mn">4</div><div class="mq">Week 8</div><div class="mt"><b>Leadership Alignment Session &amp; Phase 1 Deliverable.</b> Audit findings presented to the Leadership team; Current State Assessment and Strategic Alignment Report submitted.</div></li>
+      <li class="mstep p2"><div class="mn">5</div><div class="mq">Weeks 9&ndash;12</div><div class="mt"><b>Core Education Curriculum Development.</b> Multi-module training program designed for field crews; Field Protocol guides created for crews working in or near Indigenous communities.</div></li>
+      <li class="mstep p2"><div class="mn">6</div><div class="mq">Weeks 13&ndash;16</div><div class="mt"><b>Onboarding &amp; HR Integration.</b> Onboarding presentations rewritten; Manager's Toolkit developed to support Indigenous employee retention.</div></li>
+      <li class="mstep p2"><div class="mn">7</div><div class="mq">Weeks 17&ndash;22</div><div class="mt"><b>Pilot Training &amp; Yard Rollout.</b> Virtual pilot training sessions at two select yards; full rollout of core training across all seven OE Utility Services locations.</div></li>
+      <li class="mstep p2"><div class="mn">8</div><div class="mq">Weeks 23&ndash;24</div><div class="mt"><b>Integrity &amp; Recognition Framework.</b> Calendar established for recognizing important dates; internal program designed to recognize employees advancing the roadmap's goals.</div></li>
+      <li class="mstep p3"><div class="mn">9</div><div class="mq">Weeks 25&ndash;28</div><div class="mt"><b>KPI and Measurement Framework Setup.</b> Key Performance Indicators defined to track progress in staff education and internal engagement; reporting dashboard established for the Board.</div></li>
+      <li class="mstep p3"><div class="mn">10</div><div class="mq">Weeks 29&ndash;32</div><div class="mt"><b>Internal Governance Formalization.</b> Internal Indigenous Relations Working Group formalized with representatives from different parts of the business; terms of reference and meeting cadence defined.</div></li>
+      <li class="mstep p3"><div class="mn">11</div><div class="mq">Weeks 33&ndash;35</div><div class="mt"><b>Annual Review and Reporting.</b> End-of-year survey measures shifts in workplace culture against the Phase 1 baseline; annual progress report template drafted.</div></li>
+      <li class="mstep p3"><div class="mn">12</div><div class="mq">Week 36</div><div class="mt"><b>Project Closeout and Roadmap Handover.</b> Final roadmap and measurable outcomes presented to the Board of Directors.</div></li>
+      </ol>
+    </div>
+  </div>
+
 
   <div class="foot">
     <div class="wrapc">
