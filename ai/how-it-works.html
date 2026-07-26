@@ -3,91 +3,158 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>2026/27 AI Roadmap | OE Utility Services</title>
+<title>How the AI Works | OE Utility Services</title>
 <style>
-:root{--navy:#062F87;--blue:#01ABEE;--green:#029449;--amber:#EAB043;--dark:#0A1B4D;--ink:#22304a;--mut:#5a6a85;--road:#c9d2e0;}
+:root{--navy:#062F87;--blue:#01ABEE;--green:#029449;--amber:#EAB043;--dark:#0A1B4D;--coral:#F2695C;--violet:#9B6DE8;--ink:#22304a;--mut:#5a6a85;}
 *{margin:0;padding:0;box-sizing:border-box;}
-body{font-family:'Segoe UI',system-ui,-apple-system,Arial,sans-serif;color:var(--ink);background:#fff;}
-.wrap{max-width:1240px;margin:0 auto;padding:0 24px;}
+body{font-family:'Segoe UI',system-ui,-apple-system,Arial,sans-serif;color:var(--ink);background:#fff;line-height:1.55;}
+.wrap{max-width:1100px;margin:0 auto;padding:0 28px;}
 .grad{background:linear-gradient(90deg,var(--navy),var(--blue) 45%,var(--green) 72%,var(--amber));}
 header{position:sticky;top:0;z-index:50;background:#fff;box-shadow:0 2px 14px rgba(6,47,135,.10);}
-header .wrap{display:flex;align-items:center;justify-content:space-between;padding:12px 24px;gap:10px;flex-wrap:wrap;}
-header img{height:42px;display:block;}
+header .wrap{display:flex;align-items:center;justify-content:space-between;padding:12px 28px;gap:10px;flex-wrap:wrap;}
+header img{height:44px;display:block;}
 header a.back{font-weight:800;color:var(--navy);font-size:14px;text-decoration:none;border:2px solid var(--navy);border-radius:999px;padding:8px 18px;}
 .topbar{height:6px;}
-.titleblk{padding:46px 0 8px;}
-.titleblk h1{color:#3a4657;font-size:42px;font-weight:600;letter-spacing:-.5px;}
-.titleblk .rule{height:3px;background:var(--amber);margin-top:10px;}
-.titleblk .sub{margin-top:14px;color:var(--mut);font-size:17px;max-width:900px;}
-.legend{display:flex;gap:18px;align-items:center;margin-top:18px;flex-wrap:wrap;}
-.legend span{display:flex;align-items:center;gap:8px;font-size:13px;font-weight:700;color:var(--ink);}
-.dotl{width:14px;height:14px;border-radius:50%;display:inline-block;}
-/* ================= ROAD (desktop, SVG) ================= */
-.roadwrap{position:relative;width:1180px;max-width:100%;height:948px;margin:20px auto 18px;display:block;}
-.payoff{background:linear-gradient(135deg,#083b9e,#062F87 55%,#0A1B4D);border-radius:20px;padding:44px 48px;text-align:center;margin:6px 0 4px;box-shadow:0 20px 60px rgba(6,47,135,.28);}
-.payoff .pk{color:var(--amber);font-weight:900;letter-spacing:2px;font-size:15px;}
-.payoff .phead{display:flex;align-items:center;justify-content:center;gap:26px;margin-top:14px;flex-wrap:wrap;}
-.payoff .phead h2{color:#fff;font-size:29px;line-height:1.2;margin:0;max-width:760px;}
-.payoff p{color:#c6d1ec;font-size:17.5px;margin-top:18px;max-width:860px;margin-left:auto;margin-right:auto;line-height:1.55;}
-.parrow{width:66px;height:66px;border-radius:50%;background:var(--green);border:4px solid #fff;box-shadow:0 6px 20px rgba(2,148,73,.55);display:flex;align-items:center;justify-content:center;flex-shrink:0;}
-.termlabel{text-align:center;}
-.termlabel .q{font-weight:900;letter-spacing:1px;}
-.termlabel h3{margin-top:3px;}
-.payoff .parrow.pa-top{display:none;}
-@media(max-width:760px){.payoff{padding:28px 24px;}.payoff .phead h2{font-size:21px;}.payoff p{font-size:15.5px;}.parrow{width:54px;height:54px;}
-  .payoff .phead .pa-side{display:none;}
-  .payoff .parrow.pa-top{display:flex;margin:0 auto 16px auto;}}
-.roadsvg{position:absolute;left:0;top:0;width:1180px;height:840px;z-index:1;}
-.stop{position:absolute;width:48px;height:48px;border-radius:50%;background:#fff;border:4px solid #98a5ba;color:var(--navy);font-weight:900;font-size:18px;display:flex;align-items:center;justify-content:center;z-index:4;box-shadow:0 3px 8px rgba(6,47,135,.16);transform:translate(-50%,-50%);}
-.stop.live{border-color:#fff;background:var(--green);color:#fff;font-size:11.5px;letter-spacing:.5px;box-shadow:0 4px 14px rgba(2,148,73,.5);}
-.stop.endarrow{width:58px;height:58px;border:4px solid #fff;background:var(--green);box-shadow:0 6px 20px rgba(2,148,73,.55);}
-.ms{position:absolute;width:228px;z-index:3;background:#fff;padding:1px 3px;}
-.ms .q{font-weight:800;color:#3a4657;font-size:14px;}
-.ms h3{color:var(--navy);font-size:15.5px;line-height:1.25;margin-top:4px;}
-.ms p{color:var(--mut);font-size:12.8px;margin-top:5px;line-height:1.4;}
-.ms .imp{margin-top:7px;font-size:12.8px;font-weight:700;color:var(--green);line-height:1.35;}
-.conn{position:absolute;width:4px;background:#4f6079;z-index:2;transform:translateX(-50%);}
-.conn::after{content:'';position:absolute;left:50%;transform:translateX(-50%);width:12px;height:12px;border-radius:50%;background:#4f6079;}
-.conn.dbot::after{bottom:-5px;}
-.conn.dtop::after{top:-5px;}
-/* ================= MOBILE fallback ================= */
-.mroad{display:none;}
-@media(max-width:980px){
-  .roadwrap{display:none;}
-  .mroad{display:block;position:relative;margin:30px 0 10px;padding-left:56px;}
-  .mroad::before{content:'';position:absolute;left:20px;top:8px;bottom:8px;width:14px;border-radius:8px;background:var(--road);}
-  .mstep{position:relative;padding:0 0 30px;}
-  .mstep .mnum{position:absolute;left:-49px;top:0;width:40px;height:40px;border-radius:50%;background:#fff;border:4px solid #98a5ba;color:var(--navy);font-weight:900;font-size:16px;display:flex;align-items:center;justify-content:center;}
-  .mstep.live .mnum{border-color:var(--green);background:var(--green);color:#fff;font-size:10px;}
-  .mstep .q{font-weight:800;color:#3a4657;font-size:14px;}
-  .mstep h3{color:var(--navy);font-size:16px;margin-top:3px;}
-  .mstep p{color:var(--mut);font-size:13.5px;margin-top:4px;}
-  .mstep .imp{margin-top:6px;font-size:13.5px;font-weight:700;color:var(--green);}
-  .titleblk h1{font-size:30px;}
-}
-.gate{margin:26px auto 0;max-width:880px;text-align:center;border:2px solid var(--navy);border-radius:16px;padding:20px 28px;background:#f4f8fd;}
-.gate strong{color:var(--navy);}
-.gate p{color:var(--ink);font-size:15.5px;}
-.notes{color:#8593ab;font-size:12.5px;margin:26px 0 8px;max-width:1040px;}
-.notes div{margin-top:6px;line-height:1.4;}
-.foot{background:#0a1430;color:#8fa0c5;font-size:13px;padding:40px 0 60px;margin-top:20px;}
-.foot .brand{margin-bottom:26px;}
+.titleblk{padding:52px 0 10px;}
+.titleblk .kick{color:var(--blue);font-weight:800;letter-spacing:3px;font-size:14px;text-transform:uppercase;}
+.titleblk h1{color:var(--navy);font-size:44px;font-weight:800;letter-spacing:-.6px;margin-top:12px;line-height:1.12;}
+.titleblk .rule{height:5px;width:150px;border-radius:4px;background:var(--amber);margin-top:16px;}
+.titleblk .sub{margin-top:18px;color:var(--mut);font-size:19px;max-width:860px;}
+section{padding:56px 0;}
+h2{color:var(--navy);font-size:31px;letter-spacing:-.3px;margin-bottom:12px;}
+.sub{color:var(--mut);font-size:18px;max-width:880px;margin-bottom:8px;}
+.kick{color:var(--blue);font-weight:800;letter-spacing:3px;font-size:13.5px;text-transform:uppercase;margin-bottom:10px;}
+.dark{background:radial-gradient(1100px 500px at 80% -10%, rgba(1,171,238,.16), transparent 60%),radial-gradient(900px 500px at 10% 110%, rgba(2,148,73,.14), transparent 60%),var(--dark);color:#e8eefb;}
+.dark h2{color:#fff;}
+.dark .sub{color:#aebadb;}
+.cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:20px;margin-top:26px;}
+.card{background:#fff;border:1px solid #e3eaf5;border-radius:16px;padding:26px;box-shadow:0 6px 22px rgba(6,47,135,.06);}
+.card h3{color:var(--navy);font-size:19px;margin-bottom:10px;}
+.card p{font-size:15.5px;color:var(--ink);}
+.dark .card{background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.13);box-shadow:none;}
+.dark .card h3{color:#fff;}
+.dark .card p{color:#cfd9f2;}
+/* role cards with icon + accent */
+.role{position:relative;overflow:hidden;}
+.role::before{content:'';position:absolute;left:0;top:0;bottom:0;width:4px;background:var(--ac);}
+.role .ic{width:52px;height:52px;border-radius:14px;display:flex;align-items:center;justify-content:center;margin-bottom:16px;}
+.role .tagword{display:inline-block;margin-bottom:8px;font-size:12px;font-weight:800;letter-spacing:.6px;text-transform:uppercase;color:var(--ac);}
+/* flow strip */
+.flow{display:flex;align-items:stretch;gap:14px;margin-top:30px;}
+.flow .node{flex:1;min-width:0;background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.14);border-radius:16px;padding:20px 22px;display:flex;flex-direction:column;justify-content:center;}
+.flow .node .l{color:#fff;font-weight:800;font-size:16px;line-height:1.25;}
+.flow .node .t{color:#9fb0d6;font-size:12.5px;margin-top:6px;font-weight:700;letter-spacing:.4px;text-transform:uppercase;}
+.flow .node.mid{background:linear-gradient(135deg,rgba(1,171,238,.30),rgba(2,148,73,.16));border-color:rgba(1,171,238,.95);animation:eng 2.4s ease-in-out infinite;}
+@keyframes eng{0%,100%{box-shadow:0 0 0 1px rgba(1,171,238,.45),0 0 18px rgba(1,171,238,.45),0 0 40px rgba(1,171,238,.20);}50%{box-shadow:0 0 0 1px rgba(1,171,238,.75),0 0 30px rgba(1,171,238,.75),0 0 66px rgba(1,171,238,.42);}}
+@media(prefers-reduced-motion:reduce){.flow .node.mid{animation:none;box-shadow:0 0 24px rgba(1,171,238,.55);}}
+.flow .node.out{background:linear-gradient(135deg,rgba(2,148,73,.26),rgba(2,148,73,.08));border-color:rgba(2,148,73,.6);}
+.flow .arw{flex:0 0 auto;align-self:center;color:#6f83b3;}
+@media(max-width:860px){.flow{flex-direction:column;gap:10px;}.flow .arw{transform:rotate(90deg);margin:0 auto;}}
+/* numbered steps */
+.steps2{margin-top:26px;counter-reset:s;}
+.stp{counter-increment:s;display:flex;gap:20px;align-items:flex-start;margin-top:18px;background:rgba(255,255,255,.045);border:1px solid rgba(255,255,255,.12);border-radius:14px;padding:20px 22px;}
+.stp::before{content:counter(s);flex-shrink:0;width:38px;height:38px;border-radius:50%;background:var(--blue);color:#fff;font-weight:800;font-size:17px;display:flex;align-items:center;justify-content:center;}
+.stp h3{color:#fff;font-size:17px;margin:2px 0 4px;}
+.stp p{color:#cfd9f2;font-size:15px;}
+.stp .who{display:inline-block;margin-top:8px;font-size:12px;font-weight:800;letter-spacing:.5px;text-transform:uppercase;color:var(--amber);}
+/* not-list */
+.nots{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:16px;margin-top:24px;}
+.notc{display:flex;gap:14px;align-items:flex-start;background:rgba(242,105,92,.08);border:1px solid rgba(242,105,92,.30);border-radius:14px;padding:20px 22px;}
+.notc .x{flex-shrink:0;color:var(--coral);margin-top:2px;}
+.notc h3{color:#fff;font-size:16.5px;margin-bottom:5px;}
+.notc p{color:#d7dcec;font-size:14.5px;}
+/* security cards */
+.secg{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:18px;margin-top:26px;}
+.secc{background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.13);border-radius:16px;padding:24px 22px;}
+.secc .ic{width:46px;height:46px;border-radius:12px;background:rgba(2,148,73,.16);display:flex;align-items:center;justify-content:center;margin-bottom:15px;}
+.secc h3{color:#fff;font-size:16.5px;margin-bottom:8px;}
+.secc p{color:#cfd9f2;font-size:14.5px;line-height:1.5;}
+/* cost */
+.costrow{display:grid;grid-template-columns:1fr 1fr;gap:20px;margin-top:28px;}
+@media(max-width:640px){.costrow{grid-template-columns:1fr;}}
+.costtile{background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.14);border-radius:18px;padding:26px 26px;}
+.costtile .cl{color:#9fb0d6;font-size:13px;font-weight:800;letter-spacing:.6px;text-transform:uppercase;}
+.costtile .cbig{color:var(--amber);font-size:40px;font-weight:900;line-height:1.05;margin-top:10px;}
+.costtile .cx{color:#cfd9f2;font-size:14.5px;margin-top:8px;}
+.costtile.b .cbig{color:#7ddcff;}
+.assure{display:flex;gap:22px;align-items:center;margin-top:24px;background:linear-gradient(135deg,rgba(2,148,73,.18),rgba(2,148,73,.05));border:1.5px solid rgba(2,148,73,.6);border-radius:20px;padding:26px 30px;}
+.assure .ic{flex:0 0 auto;width:60px;height:60px;border-radius:16px;background:rgba(2,148,73,.18);display:flex;align-items:center;justify-content:center;}
+.assure p{color:#e8eefb;font-size:17.5px;line-height:1.5;margin:0;}
+.assure b{color:#fff;}
+.assure strong{color:#7ddba8;}
+@media(max-width:600px){.assure{flex-direction:column;text-align:center;}}
+.pband2{margin:26px auto 0;max-width:940px;text-align:center;border:2px solid var(--amber);background:rgba(234,176,67,.08);border-radius:18px;padding:24px 34px;color:#e8eefb;font-size:18px;line-height:1.55;}
+.pband2 strong{color:var(--amber);}
+.foot{background:#0a1430;color:#8fa0c5;font-size:13px;padding:40px 0 60px;}
+.foot .brand{margin-bottom:22px;}
 .foot .brand img{height:52px;display:block;}
 .foot .backrow{margin-bottom:26px;}
 .foot .backrow a{color:#9fdcff;font-weight:800;text-decoration:none;font-size:15px;}
-.foot h3{color:#c9d4ee;font-size:15px;letter-spacing:1px;margin-bottom:10px;}
-.foot ol{margin-left:20px;}
-.foot li{margin-top:8px;line-height:1.4;}
-.foot .legal{margin-top:34px;padding-top:20px;border-top:1px solid rgba(255,255,255,.14);text-align:center;color:#7385a8;}
-.rv{opacity:0;transform:translateY(26px);transition:opacity .6s ease,transform .6s ease;}
+.foot .legal{margin-top:28px;padding-top:20px;border-top:1px solid rgba(255,255,255,.14);text-align:center;color:#7385a8;}
+.rv{opacity:0;transform:translateY(24px);transition:opacity .6s ease,transform .6s ease;}
 .rv.in{opacity:1;transform:none;}
 @media(prefers-reduced-motion:reduce){.rv{opacity:1;transform:none;transition:none;}}
+@media(max-width:640px){.titleblk h1{font-size:31px;}h2{font-size:25px;}}
 .ctaband{background:linear-gradient(135deg,#083b9e,#062F87 55%,#0A1B4D);padding:50px 0;text-align:center;}
 .ctaband .ct{color:#fff;font-size:25px;font-weight:800;letter-spacing:-.3px;}
-.ctaband .cs{color:#b9c6e6;font-size:16px;margin-top:9px;}
-.ctaband .ctbtn{display:inline-block;margin-top:22px;background:transparent;color:#fff;font-weight:900;font-size:17px;border:2px solid var(--amber);border-radius:999px;padding:13px 34px;text-decoration:none;}
-.ctaband .ctbtn:hover{background:var(--amber);color:#31250a;}
-@media(max-width:600px){.ctaband .ct{font-size:20px;}}
+.ctaband .ctbtn{display:inline-block;margin-top:22px;background:var(--amber);color:#31250a;font-weight:900;font-size:18px;border-radius:999px;padding:15px 40px;text-decoration:none;box-shadow:0 14px 40px rgba(234,176,67,.32);}
+.ctaband .ctbtn:hover{background:#f0bd58;}
+@media(max-width:600px){.ctaband .ct{font-size:20px;}.ctaband .ctbtn{font-size:16px;padding:13px 30px;}}
+/* ===== THE FOUR MOVES + THE AREAS — light section, white cards ===== */
+.alt{background:#f6f9fd;}
+.mv{margin-top:34px;display:grid;grid-template-columns:repeat(auto-fit,minmax(232px,1fr));gap:16px;}
+.mvc{background:#fff;border:1px solid #e3eaf5;border-top:5px solid var(--ac);border-radius:16px;padding:22px 22px 24px;box-shadow:0 8px 26px rgba(6,47,135,.07);}
+.mvc .mn{width:38px;height:38px;border-radius:50%;background:var(--acbg);color:var(--ac);font-weight:900;font-size:16px;display:flex;align-items:center;justify-content:center;margin-bottom:14px;}
+.mvc .mt{display:block;font-size:10.5px;font-weight:900;letter-spacing:.9px;text-transform:uppercase;color:var(--ac);margin-bottom:6px;}
+.mvc h3{color:var(--navy);font-size:18px;margin-bottom:9px;line-height:1.3;}
+.mvc p{color:var(--ink);font-size:14.5px;line-height:1.55;}
+.mvc p b{color:var(--navy);}
+.mvnote{margin:22px auto 0;max-width:900px;text-align:center;color:var(--mut);font-size:15.5px;line-height:1.6;}
+.mvnote b{color:var(--navy);}
+.areahd{margin-top:58px;text-align:center;}
+.areahd h3{color:var(--navy);font-size:25px;letter-spacing:-.3px;line-height:1.25;}
+.areahd p{color:var(--mut);font-size:16px;line-height:1.6;margin:12px auto 0;max-width:820px;}
+.areas{margin-top:28px;display:grid;grid-template-columns:1fr 1fr;gap:18px;}
+@media(max-width:880px){.areas{grid-template-columns:1fr;}}
+.area{background:#fff;border:1px solid #e3eaf5;border-left:6px solid var(--ac);border-radius:16px;padding:24px 26px 20px;box-shadow:0 8px 26px rgba(6,47,135,.07);display:flex;flex-direction:column;}
+.area .aq{display:inline-block;font-size:11px;font-weight:900;letter-spacing:.9px;text-transform:uppercase;color:var(--ac);background:var(--acbg);border-radius:999px;padding:5px 13px;margin-bottom:12px;align-self:flex-start;}
+.area h4{color:var(--navy);font-size:19px;line-height:1.3;margin-bottom:13px;}
+.arow{display:grid;grid-template-columns:78px 1fr;gap:14px;padding:10px 0;border-top:1px solid #eef2f9;align-items:start;}
+.arow .al{font-size:10.5px;font-weight:900;letter-spacing:.7px;text-transform:uppercase;padding-top:3px;}
+.arow p{color:var(--ink);font-size:14.5px;line-height:1.5;}
+.arow p b{color:var(--navy);}
+.l1{color:var(--blue);}.l2{color:var(--green);}.l3{color:#b8830d;}.l4{color:var(--violet);}
+@media(max-width:420px){.arow{grid-template-columns:1fr;gap:3px;}}
+.constant{margin-top:34px;background:#fff;border:2px solid var(--navy);border-radius:18px;padding:30px 34px;display:grid;grid-template-columns:1fr 1fr;gap:34px;box-shadow:0 12px 34px rgba(6,47,135,.10);}
+@media(max-width:760px){.constant{grid-template-columns:1fr;gap:24px;padding:26px 22px;}}
+.constant h3{color:var(--navy);font-size:18.5px;margin-bottom:14px;}
+.constant ul{list-style:none;}
+.constant li{position:relative;padding-left:24px;color:var(--ink);font-size:15px;line-height:1.52;margin-bottom:10px;}
+.constant li:before{content:"";position:absolute;left:5px;top:8px;width:8px;height:8px;border-radius:50%;background:var(--blue);}
+.constant .fix li:before{background:var(--green);}
+.constant li b{color:var(--navy);}
+/* ===== BEYOND THE FOUR MOVES — white section ===== */
+.lay{display:grid;grid-template-columns:repeat(auto-fit,minmax(290px,1fr));gap:20px;margin-top:28px;}
+.layc{background:#fff;border:1px solid #e3eaf5;border-top:5px solid var(--ac);border-radius:16px;padding:24px 26px;box-shadow:0 8px 26px rgba(6,47,135,.07);}
+.layc .lt{display:block;font-size:10.5px;font-weight:900;letter-spacing:.9px;text-transform:uppercase;color:var(--ac);margin-bottom:7px;}
+.layc h3{color:var(--navy);font-size:19px;margin-bottom:10px;line-height:1.3;}
+.layc p{color:var(--ink);font-size:15px;line-height:1.55;}
+.layc p b{color:var(--navy);}
+.exq{margin-top:30px;border:1px solid #dbe4f3;background:#f6f9fd;border-radius:18px;padding:28px 32px;}
+.exq .eh{color:var(--navy);font-size:19px;font-weight:800;margin-bottom:6px;}
+.exq .eq{color:var(--navy);font-size:21px;font-weight:800;font-style:italic;margin:14px 0 16px;}
+.exg{display:grid;grid-template-columns:1fr;gap:20px;margin-top:20px;}
+.exp{background:#fff;border:1px solid #e3eaf5;border-radius:14px;padding:22px 24px 18px;}
+.exp h4{color:var(--navy);font-size:17px;line-height:1.3;margin-bottom:12px;}
+.exp .arow:first-of-type{border-top:none;padding-top:0;}
+.exq ul{list-style:none;}
+.exq .exf{margin-top:16px;padding-top:14px;border-top:1px solid #eef2f9;color:var(--mut);font-size:14.5px;line-height:1.5;}
+@media(max-width:700px){.exq{padding:24px 22px;}}
+.exq li{position:relative;padding-left:22px;color:var(--ink);font-size:15px;line-height:1.5;}
+.exq li:before{content:"";position:absolute;left:4px;top:8px;width:7px;height:7px;border-radius:50%;background:var(--green);}
+.exq li b{color:var(--navy);}
+.exq .en{margin-top:18px;padding-top:15px;border-top:1px solid #dfe7f4;color:var(--mut);font-size:14.5px;line-height:1.55;}
+.exq .en b{color:var(--navy);}
 </style>
 </head>
 <body>
@@ -102,158 +169,277 @@ header a.back{font-weight:800;color:var(--navy);font-size:14px;text-decoration:n
 
 <div class="wrap">
   <div class="titleblk">
-    <h1>2026/27 AI Roadmap</h1>
+    <div class="kick">In plain terms</div>
+    <h1>How the AI works</h1>
     <div class="rule"></div>
-    <p class="sub">From one live automation to a company-wide AI foundation — each step builds on the one before it, and each ends in a measurable improvement for OE.</p>
-    <div class="legend">
-      <span><i class="dotl" style="background:var(--green);"></i> LIVE TODAY</span>
-      <span><i class="dotl" style="background:var(--blue);"></i> PLANNED — each step approved by OE before it's built</span>
-    </div>
+    <p class="sub">An outline of what runs behind the demo, why it is reliable, and how OE stays in control of every part of it.</p>
   </div>
-
-  <!-- ================= DESKTOP ROAD (SVG) ================= -->
-  <div class="roadwrap">
-    <svg class="roadsvg" viewBox="0 0 1180 840" preserveAspectRatio="xMidYMin meet" aria-hidden="true">
-      <path d="M40,230 H980 A180,180 0 0 1 980,590 H40" fill="none" stroke="#c9d2e0" stroke-width="46" stroke-linecap="round"/>
-      <path d="M66,230 H980 A180,180 0 0 1 980,590 H66" fill="none" stroke="#ffffff" stroke-width="5" stroke-dasharray="20 22"/>
-    </svg>
-
-    <!-- Lane 1 stops -->
-    <div class="stop live" style="left:90px;top:230px;">LIVE</div>
-    <div class="stop" style="left:355px;top:230px;">2</div>
-    <div class="stop" style="left:620px;top:230px;">3</div>
-    <div class="stop" style="left:885px;top:230px;">4</div>
-    <!-- Lane 2 stops -->
-    <div class="stop" style="left:885px;top:590px;">5</div>
-    <div class="stop" style="left:620px;top:590px;">6</div>
-    <div class="stop" style="left:355px;top:590px;">7</div>
-    <div class="stop endarrow" style="left:90px;top:590px;"><svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="3.4" stroke-linecap="round" stroke-linejoin="round"><line x1="20" y1="12" x2="6" y2="12"/><polyline points="11,6 5,12 11,18"/></svg></div>
-
-    <!-- Lane 1: card 1 & 3 above, 2 & 4 below -->
-    <div class="conn dbot" style="left:90px;top:150px;height:57px;"></div>
-    <div class="ms rv" style="left:20px;top:10px;">
-      <div class="q">NOW — Q3 2026</div>
-      <h3>Version 1: Dispatch email routing — LIVE</h3>
-      <p>The right email reaches the right yard automatically, across all six yards.¹</p>
-      <div class="imp">Each yard sees only its own work — no more reading through everything.</div>
-    </div>
-
-    <div class="conn dtop" style="left:355px;top:253px;height:47px;"></div>
-    <div class="ms rv" style="left:241px;top:300px;">
-      <div class="q">Q4 2026</div>
-      <h3>Crews &amp; trucks matched — Customers answered</h3>
-      <p>The right crew, unit, and equipment matched to every job by OE's rules (training, competency, customer rules) — plus an instant acknowledgement to every Customer.</p>
-      <div class="imp">The right people and units, on the right jobs — in seconds.</div>
-    </div>
-
-    <div class="conn dbot" style="left:620px;top:150px;height:57px;"></div>
-    <div class="ms rv" style="left:506px;top:10px;">
-      <div class="q">Q1 2027</div>
-      <h3>Work Orders created by AI</h3>
-      <p>Every dispatch email read on arrival; Work Orders created in Nylus in seconds — less manual entry, duplicates caught, urgent flagged first.</p>
-      <div class="imp">75–90% faster processing — reported².</div>
-    </div>
-
-    <div class="conn dtop" style="left:885px;top:253px;height:47px;"></div>
-    <div class="ms rv" style="left:771px;top:300px;">
-      <div class="q">Q1–Q2 2027</div>
-      <h3>Safety checked before anything is dispatched</h3>
-      <p>Locates, forms, and certifications verified on every job — with human review and approval wherever OE requires; every job keeps an audit-ready record.</p>
-      <div class="imp">Required safety checks are confirmed before dispatch.</div>
-    </div>
-
-    <!-- Lane 2: cards 5, 6, 7 below -->
-    <div class="conn dtop" style="left:885px;top:613px;height:47px;"></div>
-    <div class="ms rv" style="left:771px;top:660px;">
-      <div class="q">Q2 2027</div>
-      <h3>Every channel, not just email</h3>
-      <p>Phone calls, texts, web forms, Teams — including attachments and scanned documents — captured and routed as they arrive.³·⁴</p>
-      <div class="imp">One intake, no matter how the request shows up.</div>
-    </div>
-
-    <div class="conn dtop" style="left:620px;top:613px;height:47px;"></div>
-    <div class="ms rv" style="left:506px;top:660px;">
-      <div class="q">Q3 2027</div>
-      <h3>Get answers from OE's operational data</h3>
-      <p>Plain-language answers for the whole team — what's scheduled, what's open, what happened on a past job — working directly with Nylus.⁵·⁶</p>
-      <div class="imp">~50% higher dispatcher productivity; 30–35% less drive time — reported⁷.</div>
-    </div>
-
-    <div class="conn dtop" style="left:355px;top:613px;height:47px;"></div>
-    <div class="ms rv" style="left:241px;top:660px;width:238px;">
-      <div class="q">PHASED · Q4 2026 → Q4 2027</div>
-      <h3>Customer / Team Portal — one platform</h3>
-      <p><strong style="color:var(--navy);">Phase 1 · Q4 2026 — Team Hub:</strong> automated Safety Messaging (HR-requested), CEO Messages, and team project updates. <strong style="color:var(--navy);">Phase 2 · Q4 2027 — Customer portal:</strong> Work Orders, billing &amp; payments, photos, messages, records. One platform — so Phase 1 already advances Phase 2.</p>
-      <div class="imp">Built once, updated once — Customers and the team each see only their own view.</div>
-    </div>
-
-    <!-- terminus label under the green arrow -->
-    <div class="conn dtop" style="left:90px;top:619px;height:16px;"></div>
-    <div class="ms termlabel rv" style="left:15px;top:636px;width:210px;">
-      <div class="q" style="color:var(--green);font-size:15px;">THE COMPOUNDING PAYOFF</div>
-      <div style="color:var(--mut);font-size:12.5px;margin-top:4px;">Where the whole roadmap leads ↓</div>
-    </div>
-
-  </div>
-
-
-  <!-- ================= MOBILE ROAD ================= -->
-  <div class="mroad">
-    <div class="mstep live"><div class="mnum">LIVE</div><div class="q">NOW — Q3 2026</div><h3>Version 1: Dispatch email routing — LIVE</h3><p>The right email reaches the right yard automatically, across all six yards.¹</p><div class="imp">Each yard sees only its own work — no more reading through everything.</div></div>
-    <div class="mstep"><div class="mnum">2</div><div class="q">Q4 2026</div><h3>Crews &amp; trucks matched — Customers answered</h3><p>The right crew, unit, and equipment matched to every job by OE's rules (training, competency, customer rules) — plus an instant acknowledgement to every Customer.</p><div class="imp">The right people and units, on the right jobs — in seconds.</div></div>
-    <div class="mstep"><div class="mnum">3</div><div class="q">Q1 2027</div><h3>Work Orders created by AI</h3><p>Every dispatch email read on arrival; Work Orders created in Nylus in seconds — less manual entry, duplicates caught, urgent flagged first.</p><div class="imp">75–90% faster processing — reported².</div></div>
-    <div class="mstep"><div class="mnum">4</div><div class="q">Q1–Q2 2027</div><h3>Safety checked before anything is dispatched</h3><p>Locates, forms, and certifications verified on every job — with human review and approval wherever OE requires; every job keeps an audit-ready record.</p><div class="imp">Required safety checks are confirmed before dispatch.</div></div>
-    <div class="mstep"><div class="mnum">5</div><div class="q">Q2 2027</div><h3>Every channel, not just email</h3><p>Phone calls, texts, web forms, Teams — including attachments and scanned documents — captured and routed as they arrive.³·⁴</p><div class="imp">One intake, no matter how the request shows up.</div></div>
-    <div class="mstep"><div class="mnum">6</div><div class="q">Q3 2027</div><h3>Get answers from OE's operational data</h3><p>Plain-language answers for the whole team — what's scheduled, what's open, what happened on a past job — working directly with Nylus.⁵·⁶</p><div class="imp">~50% higher dispatcher productivity; 30–35% less drive time — reported⁷.</div></div>
-    <div class="mstep"><div class="mnum">7</div><div class="q">PHASED · Q4 2026 → Q4 2027</div><h3>Customer / Team Portal — one platform</h3><p><strong>Phase 1 · Q4 2026 — Team Hub:</strong> automated Safety Messaging (HR-requested), CEO Messages, and team project updates. <strong>Phase 2 · Q4 2027 — Customer portal:</strong> Work Orders, billing &amp; payments, photos, messages, records. One platform — so Phase 1 already advances Phase 2.</p><div class="imp">Built once, updated once — Customers and the team each see only their own view.</div></div>
-  </div>
-
-  <div class="payoff rv">
-    <div class="parrow pa-top"><svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="3.4" stroke-linecap="round" stroke-linejoin="round"><line x1="20" y1="12" x2="6" y2="12"/><polyline points="11,6 5,12 11,18"/></svg></div>
-    <div class="pk">THE COMPOUNDING PAYOFF</div>
-    <div class="phead">
-      <h2>Each step builds on the last—powered by one shared AI foundation.</h2>
-      <div class="parrow pa-side"><svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="3.4" stroke-linecap="round" stroke-linejoin="round"><line x1="20" y1="12" x2="6" y2="12"/><polyline points="11,6 5,12 11,18"/></svg></div>
-    </div>
-    <p>Less administrative work means more time for OE's people to focus on safety, Customers, and getting jobs done effectively. As OE adds new systems, the same foundation extends with them—helping OE move ahead and stay there.</p>
-  </div>
-
-  <div class="gate rv">
-    <p><strong>This is a suggested roadmap — OE sets the sequence and priorities, based on the team's needs.</strong> Each step is <strong>defined &amp; quoted → approved by OE → verified in testing</strong> before it's built — so OE decides what moves forward, and when. Costs and the approval process are set out on the <a href="/ai/" style="color:var(--blue);font-weight:800;text-decoration:none;">AI overview</a>.</p>
-  </div>
-
 </div>
+
+<!-- ============ THREE PARTS ============ -->
+<section class="dark">
+  <div class="wrap">
+    <div class="kick" style="color:var(--amber);">Overview</div>
+    <h2>Three parts — and OE sets the rules for all of them</h2>
+    <p class="sub">The AI is not a single, opaque system. It's three parts working together, and none of them do anything on their own — they only ever act on the rules OE puts in place.</p>
+
+    <div class="cards">
+      <div class="card role rv" style="--ac:var(--blue);">
+        <div class="ic" style="background:rgba(1,171,238,.16);"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="var(--blue)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2a7 7 0 0 0-7 7c0 2.4 1.2 4 2.5 5.2.7.7 1.5 1.4 1.5 2.3V18h6v-1.5c0-.9.8-1.6 1.5-2.3C17.8 13 19 11.4 19 9a7 7 0 0 0-7-7z"/><line x1="9" y1="21" x2="15" y2="21"/></svg></div>
+        <span class="tagword">The brain</span>
+        <h3>The AI model</h3>
+        <p>Knowledge, reasoning, and language — it reads, understands, and drafts. OE's demo uses Claude, from Anthropic. On its own it only <em>reasons</em> — it cannot access OE's systems or transmit anything externally.</p>
+      </div>
+      <div class="card role rv" style="--ac:var(--amber);">
+        <div class="ic" style="background:rgba(234,176,67,.18);"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="var(--amber)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 7h-9"/><path d="M14 17H5"/><circle cx="17" cy="17" r="3"/><circle cx="7" cy="7" r="3"/></svg></div>
+        <span class="tagword">The worker</span>
+        <h3>The agent</h3>
+        <p>Takes a request, follows OE's rules step by step, and knows which system to use for each step. This is the part that carries out the work — acting as a fast, consistent coordinator.</p>
+      </div>
+      <div class="card role rv" style="--ac:var(--green);">
+        <div class="ic" style="background:rgba(2,148,73,.16);"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="var(--green)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="7" height="7" rx="1.5"/><rect x="14" y="3" width="7" height="7" rx="1.5"/><rect x="3" y="14" width="7" height="7" rx="1.5"/><rect x="14" y="14" width="7" height="7" rx="1.5"/></svg></div>
+        <span class="tagword">The tools</span>
+        <h3>OE's own systems</h3>
+        <p>Nylus for dispatch, Sage for accounting, the CRM for Customer activity, the Microsoft platform, maps. The AI plugs into the systems OE already uses and pays for — it doesn't replace them. OE's systems of record stay put; only the specific text a step needs is sent to the AI to read.</p>
+      </div>
+    </div>
+
+    <p class="sub" style="margin-top:40px;">Put together, every job flows the same way:</p>
+    <div class="flow rv">
+      <div class="node">
+        <span class="l">A request comes in</span>
+        <span class="t">Email · call · form</span>
+      </div>
+      <svg class="arw" width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><line x1="4" y1="12" x2="19" y2="12"/><polyline points="13,6 20,12 13,18"/></svg>
+      <div class="node mid">
+        <span class="l">The agent follows OE's rules</span>
+        <span class="t">Uses OE's systems · asks the brain to read &amp; reason</span>
+      </div>
+      <svg class="arw" width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><line x1="4" y1="12" x2="19" y2="12"/><polyline points="13,6 20,12 13,18"/></svg>
+      <div class="node out">
+        <span class="l">Completed — the right result</span>
+        <span class="t">Reviewed by a person where OE requires</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ THE FOUR MOVES ============ -->
+<section class="alt">
+  <div class="wrap">
+    <div class="kick">The mechanics</div>
+    <h2>One sequence &mdash; four moves, in the same order</h2>
+    <p class="sub">Version 1 &mdash; the dispatch inbox &mdash; is set out on the AI overview. This page is the mechanism underneath it. It is also the pattern OE builds each new area to: a different job each time, but the same four moves in the same order &mdash; only the system it asks, and the rule that decides, are different.</p>
+
+    <div class="mv">
+      <div class="mvc rv" style="--ac:var(--blue);--acbg:rgba(1,171,238,.14);">
+        <div class="mn">1</div>
+        <span class="mt">The brain</span>
+        <h3>It reads</h3>
+        <p>Text goes to the AI model &mdash; and only text. It reads it and returns what it found, set out in order. <b>Reading is the entirety of what it does.</b></p>
+      </div>
+      <div class="mvc rv" style="--ac:var(--green);--acbg:rgba(2,148,73,.14);">
+        <div class="mn">2</div>
+        <span class="mt">OE&rsquo;s systems</span>
+        <h3>It checks</h3>
+        <p>The agent takes that answer to OE&rsquo;s own systems of record and tests it &mdash; does this exist, is it current, is it already there.</p>
+      </div>
+      <div class="mvc rv" style="--ac:var(--amber);--acbg:rgba(234,176,67,.18);">
+        <div class="mn">3</div>
+        <span class="mt">The agent</span>
+        <h3>OE&rsquo;s rule decides</h3>
+        <p><b>The model proposes; OE&rsquo;s rules decide.</b> Where OE has set a rule, it is followed exactly. Where OE has set none, nothing happens.</p>
+      </div>
+      <div class="mvc rv" style="--ac:var(--violet);--acbg:rgba(155,109,232,.16);">
+        <div class="mn">4</div>
+        <span class="mt">The result</span>
+        <h3>It acts &mdash; and it is logged</h3>
+        <p>Only the actions OE approved in advance are carried out. Every step is recorded, and a person signs off wherever OE requires.</p>
+      </div>
+    </div>
+
+    <p class="mvnote">Move 1 is the only place an AI model is involved at all. Moves 2, 3 and 4 are OE&rsquo;s systems and OE&rsquo;s rules &mdash; which is why <b>the same sequence can be pointed at a new area without changing what controls it.</b></p>
+
+    <div class="areahd rv">
+      <h3>The same four moves, across the work still to come</h3>
+      <p>Each of these is a step on <a href="/ai/roadmap" target="_blank" rel="noopener" style="color:var(--blue);font-weight:800;text-decoration:none;">OE&rsquo;s roadmap</a>. Read them down the left and the pattern is identical every time &mdash; what changes is which system gets asked, and which of OE&rsquo;s rules decides the outcome.</p>
+    </div>
+
+    <div class="areas">
+
+      <div class="area rv" style="--ac:var(--amber);--acbg:rgba(234,176,67,.18);">
+        <span class="aq">Q4 2026</span>
+        <h4>Crews and trucks matched to the job</h4>
+        <div class="arow"><span class="al l1">Reads</span><p>The job as it came in &mdash; where it is, what type of work it is, what equipment it calls for.</p></div>
+        <div class="arow"><span class="al l2">Checks</span><p>OE&rsquo;s own records: who is trained and certified for that work, and which crews and units are available.</p></div>
+        <div class="arow"><span class="al l3">Decides</span><p>OE&rsquo;s matching rules weigh it &mdash; <b>training and competency, experience and crew type, Customer rules, cost-effective routing.</b></p></div>
+        <div class="arow"><span class="al l4">Acts</span><p>Puts forward the crew, unit and equipment, and the Customer receives an immediate acknowledgement.</p></div>
+      </div>
+
+      <div class="area rv" style="--ac:var(--blue);--acbg:rgba(1,171,238,.14);">
+        <span class="aq">Q1 2027</span>
+        <h4>Work Orders created in Nylus</h4>
+        <div class="arow"><span class="al l1">Reads</span><p>The text of the request, returning what it found &mdash; Work Order numbers, addresses, job type, and anything marked urgent.</p></div>
+        <div class="arow"><span class="al l2">Checks</span><p>Each one against Nylus: does this already exist, and is it a repeat of an earlier message.</p></div>
+        <div class="arow"><span class="al l3">Decides</span><p>New ones created, matching ones updated, repeats left alone. <b>Where OE has set no rule, nothing is written.</b></p></div>
+        <div class="arow"><span class="al l4">Acts</span><p>Writes only the fields OE has approved, and records what was written and when.</p></div>
+      </div>
+
+      <div class="area rv" style="--ac:var(--green);--acbg:rgba(2,148,73,.14);">
+        <span class="aq">Q1&ndash;Q2 2027</span>
+        <h4>Safety confirmed before a job goes out</h4>
+        <div class="arow"><span class="al l1">Reads</span><p>The paperwork on the job &mdash; the locate, the form, the certification &mdash; and returns the dates and fields it found.</p></div>
+        <div class="arow"><span class="al l2">Checks</span><p>Those against what OE requires for that type of work.</p></div>
+        <div class="arow"><span class="al l3">Decides</span><p>Locate expired, form incomplete, certification lapsed &mdash; <b>the job stops.</b> Nothing about it is assumed either way.</p></div>
+        <div class="arow"><span class="al l4">Acts</span><p>It does not go out until a person clears it, and the job keeps an audit-ready record.</p></div>
+      </div>
+
+      <div class="area rv" style="--ac:var(--violet);--acbg:rgba(155,109,232,.16);">
+        <span class="aq">Q2 2027</span>
+        <h4>Requests from every channel, not just email</h4>
+        <div class="arow"><span class="al l1">Reads</span><p>The request in whatever form it arrives &mdash; a call, a text, a web form, a Teams message, a scanned attachment.</p></div>
+        <div class="arow"><span class="al l2">Checks</span><p>The same records as an email: who it came from, and what OE has on file for them.</p></div>
+        <div class="arow"><span class="al l3">Decides</span><p><b>The same rules as an email.</b> The channel changes; what is permitted to happen does not.</p></div>
+        <div class="arow"><span class="al l4">Acts</span><p>Routed to the right person or queue, with the original request kept alongside it.</p></div>
+      </div>
+
+      <div class="area rv" style="--ac:var(--blue);--acbg:rgba(1,171,238,.14);">
+        <span class="aq">Q3 2027</span>
+        <h4>Plain-language answers from OE&rsquo;s data</h4>
+        <div class="arow"><span class="al l1">Reads</span><p>The question exactly as it is typed &mdash; <em>&ldquo;What&rsquo;s scheduled for Friday?&rdquo;</em></p></div>
+        <div class="arow"><span class="al l2">Checks</span><p>Turns it into a lookup against Nylus, and reads back only what that person is permitted to see.</p></div>
+        <div class="arow"><span class="al l3">Decides</span><p><b>This one only reads.</b> There is no action for it to take and nothing for it to change.</p></div>
+        <div class="arow"><span class="al l4">Acts</span><p>Returns the answer, and where in OE&rsquo;s data it came from.</p></div>
+      </div>
+
+      <div class="area rv" style="--ac:var(--amber);--acbg:rgba(234,176,67,.18);">
+        <span class="aq">Phased &middot; Q4 2026 &rarr; Q4 2027</span>
+        <h4>Customer / Team Portal</h4>
+        <div class="arow"><span class="al l1">Reads</span><p>What is going out &mdash; safety messaging, a CEO message, a team project update, a job&rsquo;s activity.</p></div>
+        <div class="arow"><span class="al l2">Checks</span><p>Who the audience is, and what that role is permitted to see.</p></div>
+        <div class="arow"><span class="al l3">Decides</span><p><b>Nothing is published until the person OE has named approves it.</b></p></div>
+        <div class="arow"><span class="al l4">Acts</span><p>Posts once, to one platform &mdash; Customers and the team each see only their own view.</p></div>
+      </div>
+
+    </div>
+
+    <div class="constant rv">
+      <div>
+        <h3>What changes from one area to the next</h3>
+        <ul>
+          <li>The <b>source</b> &mdash; an email, a call, a form, a question typed into a box.</li>
+          <li>The <b>system that gets asked</b> &mdash; dispatch, accounting, Customer records, documents, or maps.</li>
+          <li>The <b>action at the end</b> &mdash; a Work Order, a crew assignment, a hold on a job, an answer.</li>
+        </ul>
+      </div>
+      <div class="fix">
+        <h3>What doesn&rsquo;t</h3>
+        <ul>
+          <li>The controls. They are <b>identical in all six</b> &mdash; and in any area OE adds after them.</li>
+          <li>They are set out in full in the two sections that follow, so they are not repeated here.</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ BEYOND THE FOUR MOVES ============ -->
+<section>
+  <div class="wrap">
+    <div class="kick">The rest of the architecture</div>
+    <h2>Three further layers: memory, planning, and more than one agent</h2>
+    <p class="sub">The four moves are what happens on a single request. These three layers are what allow OE to carry context from one request to the next, to handle work that takes many steps, and to run more than one area of the business at a time.</p>
+
+    <div class="lay">
+      <div class="layc rv" style="--ac:var(--green);">
+        <span class="lt">Layer &mdash; memory</span>
+        <h3>It keeps the context OE allows it to keep</h3>
+        <p>A Customer&rsquo;s standing instructions, how a yard prefers work assigned, what happened on a job last month. <b>Without a memory layer, every request starts from zero</b> and has to be re-explained. What is kept, and for how long, is OE&rsquo;s decision.</p>
+      </div>
+      <div class="layc rv" style="--ac:var(--amber);">
+        <span class="lt">Layer &mdash; planning</span>
+        <h3>It breaks a request into steps</h3>
+        <p>A request that takes seven steps is carried out as seven steps, in order. The agent works out the sequence and does each one &mdash; and <b>only the parts that need reading or reasoning are put to the model at all.</b></p>
+      </div>
+      <div class="layc rv" style="--ac:var(--violet);">
+        <span class="lt">Layer &mdash; more than one agent</span>
+        <h3>Each area can have its own</h3>
+        <p>Dispatch, accounting, sales, HR &mdash; an agent each, every one of them working to the rules OE set for that area. <b>A coordinating agent puts their answers together</b> when a question spans more than one.</p>
+      </div>
+    </div>
+
+    <div class="exq rv">
+      <div class="eh">What that looks like outside dispatch &mdash; illustrations, not builds</div>
+      <div class="exg">
+
+        <div class="exp">
+          <h4>Accounting &mdash; the same four moves, asked of Sage</h4>
+          <div class="arow"><span class="al l1">Reads</span><p>The week&rsquo;s completed Work Orders in <b>Nylus</b>, and the invoices raised in <b>Sage</b>.</p></div>
+          <div class="arow"><span class="al l2">Checks</span><p>Which completed jobs have not been billed, and where a Customer PO or job reference is missing.</p></div>
+          <div class="arow"><span class="al l3">Decides</span><p>OE&rsquo;s billing rules &mdash; what is ready to invoice, what is short of information, what is on hold.</p></div>
+          <div class="arow"><span class="al l4">Acts</span><p>Puts that list in front of the person who does the billing. <b>It does not post entries, and it does not approve payment.</b></p></div>
+        </div>
+
+      </div>
+      <div class="en">This is not built today, and it does not sit on the roadmap dates. It is shown because it is what the architecture above allows once the roadmap areas are in place &mdash; and because accounting is the clearest case of the rule this whole page rests on: <b>the AI reads and proposes; a person posts.</b> The companion view &mdash; one question, answered across four of OE&rsquo;s systems at once &mdash; is set out on the <a href="/ai/" target="_blank" rel="noopener" style="color:var(--blue);font-weight:800;text-decoration:none;">AI overview</a>.</div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ WHAT IT DOES NOT DO ============ -->
+<section class="dark">
+  <div class="wrap">
+    <div class="kick" style="color:var(--coral);">Just as important</div>
+    <h2>What the AI does <em>not</em> do</h2>
+    <p class="sub">For a team that's rightly cautious about AI, what it won't do matters as much as what it will.</p>
+    <div class="nots">
+      <div class="notc rv"><div class="x"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><line x1="6" y1="6" x2="18" y2="18"/><line x1="18" y1="6" x2="6" y2="18"/></svg></div><div><h3>It doesn't act on its own</h3><p>It only ever follows the rules OE has set &mdash; it never initiates work on its own.</p></div></div>
+      <div class="notc rv"><div class="x"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><line x1="6" y1="6" x2="18" y2="18"/><line x1="18" y1="6" x2="6" y2="18"/></svg></div><div><h3>It doesn't make unapproved decisions</h3><p>A person signs off wherever OE requires. The AI proposes; OE decides.</p></div></div>
+      <div class="notc rv"><div class="x"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><line x1="6" y1="6" x2="18" y2="18"/><line x1="18" y1="6" x2="6" y2="18"/></svg></div><div><h3>It doesn't drift or improvise</h3><p>It does the defined task the same way every time — consistently, with no deviation or improvisation.</p></div></div>
+      <div class="notc rv"><div class="x"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><line x1="6" y1="6" x2="18" y2="18"/><line x1="18" y1="6" x2="6" y2="18"/></svg></div><div><h3>It doesn't replace the team's judgment</h3><p>It removes the repetitive admin so OE's people spend their time where it counts.</p></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ SECURITY ============ -->
+<section>
+  <div class="wrap">
+    <div class="kick">Security &amp; data integrity</div>
+    <h2 style="color:var(--navy);">OE's data remains under OE's control</h2>
+    <p class="sub">The automation runs inside the environment OE already trusts, and the data is handled to enterprise standards.</p>
+  </div>
+  <div class="wrap"><div style="background:radial-gradient(1100px 500px at 80% -10%, rgba(1,171,238,.16), transparent 60%),radial-gradient(900px 500px at 10% 110%, rgba(2,148,73,.14), transparent 60%),var(--dark);border-radius:20px;padding:30px 30px;">
+    <div class="secg">
+      <div class="secc rv"><div class="ic"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="var(--green)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2 4 5v6c0 5 3.5 8.5 8 10 4.5-1.5 8-5 8-10V5l-8-3z"/></svg></div><h3>Built on OE's Microsoft platform</h3><p>The workflow and OE's systems of record (Nylus, Microsoft 365) run on the platform OE already licenses. When the AI needs to read or reason, only that specific text is sent to Claude's secure API — then the result comes back.</p></div>
+      <div class="secc rv"><div class="ic"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="var(--green)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="11" width="16" height="10" rx="2"/><path d="M8 11V7a4 4 0 0 1 8 0v4"/></svg></div><h3>Never used to train AI</h3><p>Under Anthropic's commercial terms, business data sent to the model is <b style="color:#fff;">not used to train it</b>, OE owns both what goes in and what comes out, and enterprise zero-data-retention can be enabled.</p></div>
+      <div class="secc rv"><div class="ic"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="var(--green)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2 4 5v6c0 5 3.5 8.5 8 10 4.5-1.5 8-5 8-10V5l-8-3z"/><path d="M9 12l2 2 4-4"/></svg></div><h3>Encrypted end to end</h3><p>Data is encrypted in transit and at rest, to the same enterprise standards OE's Microsoft systems already use.</p></div>
+      <div class="secc rv"><div class="ic"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="var(--green)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="9" cy="7" r="4"/><path d="M2 21v-2a5 5 0 0 1 5-5h4a5 5 0 0 1 5 5v2"/><path d="M18 8l2 2 3-3"/></svg></div><h3>Role-based access</h3><p>The same rules that route the work also govern who sees it — each yard and each person sees only what they should.</p></div>
+      <div class="secc rv"><div class="ic"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="var(--green)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 11l3 3L22 4"/><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/></svg></div><h3>Human approval where OE requires</h3><p>OE decides which steps need a person's sign-off before anything happens — and those gates are built in.</p></div>
+      <div class="secc rv"><div class="ic"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="var(--green)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="8" y1="13" x2="16" y2="13"/><line x1="8" y1="17" x2="16" y2="17"/></svg></div><h3>Full audit trail</h3><p>Every action the AI takes is logged and reviewable — so OE can always see exactly what was done, and why.</p></div>
+    </div>
+    <div class="rv" style="margin-top:24px;border:1.5px solid rgba(2,148,73,.55);background:rgba(2,148,73,.10);border-radius:14px;padding:18px 22px;color:#e8eefb;font-size:16px;line-height:1.55;">Nothing about this asks OE to hand over control of its data. The AI reads and reasons; OE&rsquo;s own systems hold everything &mdash; and OE decides what the AI is allowed to touch.</div>
+  </div></div>
+</section>
 
 <div class="ctaband">
   <div class="wrap">
-    <div class="ct rv">Want to understand how the AI works?</div>
-    <div class="cs rv">What runs behind the demo — the model, the agent, and OE's own systems — and why OE stays in control.</div>
-    <a class="ctbtn rv" href="/ai/how-it-works" target="_blank" rel="noopener">See how the AI works →</a>
+    <div class="ct rv">See the suggested roadmap.</div>
+    <a class="ctbtn rv" href="/ai/roadmap" target="_blank" rel="noopener">View the 2026/27 roadmap →</a>
   </div>
 </div>
 
 <div class="foot">
   <div class="wrap">
     <div class="brand"><img src="data:image/png;base64,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" alt="OE Utility Services — Get More Out — 30 Years"></div>
-    <div class="backrow"><a href="/ai/">← Back to the AI overview</a>&nbsp;&nbsp;·&nbsp;&nbsp;<a href="/ai/how-it-works">See how the AI works →</a></div>
-    <h3>REFERENCES</h3>
-    <ol>
-      <li>Version 1 routes by the rules the OE team provides — the more complete the rules, the better it works; later versions add AI that reads each email's content directly.</li>
-      <li>Enterprise automation benchmark summaries citing McKinsey, Forrester, and Gartner (2025–2026); reported results from other organizations — not OE projections.</li>
-      <li>Mailytica AI Email Routing (2024).</li>
-      <li>Microsoft Copilot Studio (Microsoft, 2026).</li>
-      <li>Nylus Systems, nylus.ca/integration.</li>
-      <li>Plain-language access to live scheduling data is current field service capability (2026).</li>
-      <li>Field service platform data and AI route-optimization industry results (2026); reported results from other organizations — not OE projections.</li>
-    </ol>
+    <div class="backrow"><a href="/ai/">← Back to the AI overview</a>&nbsp;&nbsp;·&nbsp;&nbsp;<a href="/ai/roadmap">View the 2026/27 roadmap →</a></div>
     <div class="legal">© 2026 OE Utility Services. All Rights Reserved. · Confidential</div>
   </div>
 </div>
 
 <script>
 (function(){
-  var io = new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target);}});},{threshold:.15});
-  document.querySelectorAll('.rv,.mstep').forEach(function(el){el.classList.add('rv');io.observe(el);});
+  var io = new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target);}});},{threshold:.12});
+  document.querySelectorAll('.rv').forEach(function(el){io.observe(el);});
 })();
 </script>
 </body>

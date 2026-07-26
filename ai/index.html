@@ -12,7 +12,7 @@ body{font-family:'Segoe UI',system-ui,-apple-system,Arial,sans-serif;color:var(-
 .grad{background:linear-gradient(90deg,var(--navy),var(--blue) 45%,var(--green) 72%,var(--amber));}
 header{position:sticky;top:0;z-index:50;background:#fff;box-shadow:0 2px 14px rgba(6,47,135,.10);}
 header .wrap{display:flex;align-items:center;justify-content:space-between;padding:12px 28px;}
-header img{height:56px;display:block;}
+header img{height:44px;display:block;}
 header .hlink{font-weight:800;color:var(--navy);font-size:16px;letter-spacing:.2px;}
 .topbar{height:6px;}
 .hero{background:linear-gradient(180deg,#f4f8fd,#fff);padding:64px 0 52px;border-bottom:1px solid #e7edf6;}
@@ -25,6 +25,8 @@ header .hlink{font-weight:800;color:var(--navy);font-size:16px;letter-spacing:.2
 .pill{border-radius:999px;padding:10px 22px;font-weight:700;font-size:15px;}
 .pill.live{background:var(--green);color:#fff;}
 .pill.soft{background:#eaf3ff;color:var(--navy);}
+.pill.lnk{background:#fff;border:1.5px solid var(--blue);color:var(--blue);text-decoration:none;font-weight:800;}
+.pill.lnk:hover{background:var(--blue);color:#fff;}
 section{padding:58px 0;}
 section.alt{background:#f6f9fd;}
 h2{color:var(--navy);font-size:32px;letter-spacing:-.3px;margin-bottom:10px;}
@@ -102,12 +104,38 @@ td.yard{font-weight:700;color:var(--navy);text-align:right;}
 .safety .verdict{margin-top:16px;border-radius:10px;text-align:center;font-weight:800;padding:12px;color:#fff;}
 .safety .bad .verdict{background:var(--coral);} .safety .good .verdict{background:var(--green);}
 .note{border:1px solid rgba(255,255,255,.25);border-radius:12px;padding:16px 20px;color:#cfd9f2;font-size:15px;margin-top:20px;text-align:center;}
+/* ===== SECURITY — COMPACT ===== */
+.seclist{background:#fff;border:1px solid #e3eaf5;border-radius:16px;padding:28px 32px;box-shadow:0 8px 26px rgba(6,47,135,.07);margin-top:26px;}
+.seclist ul{list-style:none;display:grid;grid-template-columns:1fr 1fr;gap:13px 30px;margin:0;padding:0;}
+@media(max-width:700px){.seclist ul{grid-template-columns:1fr;}}
+.seclist li{position:relative;padding-left:27px;color:var(--ink);font-size:15.5px;line-height:1.5;}
+.seclist li:before{content:"✓";position:absolute;left:0;top:0;color:var(--green);font-weight:900;}
+.seclist b{color:var(--navy);}
+.seclist .secmore{margin-top:20px;padding-top:16px;border-top:1px solid #eef2f9;font-size:15px;color:var(--mut);}
+.seclist .secmore a{color:var(--blue);text-decoration:none;font-weight:800;}
+/* ===== BEYOND DISPATCH ===== */
+.bdlab{display:inline-block;border:1.5px solid var(--amber);color:var(--amber);border-radius:999px;padding:7px 18px;font-weight:900;font-size:12.5px;letter-spacing:.8px;text-transform:uppercase;margin-bottom:18px;}
+.bdg{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:20px;margin-top:26px;}
+.bdc{background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.13);border-top:4px solid var(--ac);border-radius:16px;padding:26px 26px 22px;display:flex;flex-direction:column;}
+.bdc .bsys{font-size:12px;font-weight:900;letter-spacing:1.1px;text-transform:uppercase;color:var(--ac);margin-bottom:9px;}
+.bdc h3{color:#fff;font-size:20px;margin-bottom:11px;line-height:1.28;}
+.bdc p{color:#cfd9f2;font-size:15.5px;line-height:1.55;}
+.bdc .bout{margin:auto 0 0;padding-top:16px;margin-top:16px;border-top:1px solid rgba(255,255,255,.14);color:#fff;font-weight:800;font-size:15px;line-height:1.45;}
+.bdask{margin-top:26px;background:linear-gradient(135deg,rgba(1,171,238,.20),rgba(1,171,238,.05));border:1.5px solid rgba(1,171,238,.55);border-radius:20px;padding:30px 34px;}
+.bdask .bq{color:#fff;font-size:26px;font-weight:900;font-style:italic;letter-spacing:-.3px;}
+.bdask .bl{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:10px 26px;margin-top:20px;list-style:none;}
+.bdask .bl li{position:relative;padding-left:22px;color:#e8eefb;font-size:15.5px;line-height:1.5;}
+.bdask .bl li:before{content:"";position:absolute;left:3px;top:9px;width:8px;height:8px;border-radius:50%;background:var(--blue);}
+.bdask .bl li b{color:#fff;}
+.bdask .bn{margin-top:20px;padding-top:16px;border-top:1px solid rgba(255,255,255,.16);color:#aebadb;font-size:14.5px;line-height:1.55;}
+.bdask .bn b{color:#fff;}
+@media(max-width:600px){.bdask{padding:24px 22px;}.bdask .bq{font-size:21px;}}
 .foot{background:#0a1430;color:#8fa0c5;font-size:13px;padding:40px 0 60px;}
 .foot ol{margin-left:20px;}
 .foot li{margin-top:8px;}
 .foot .brand{margin-bottom:26px;}
 .foot .legal{margin-top:34px;padding-top:20px;border-top:1px solid rgba(255,255,255,.14);text-align:center;color:#7385a8;font-size:12.5px;}
-.foot .brand img{height:56px;display:block;}
+.foot .brand img{height:52px;display:block;}
 .chips{display:flex;gap:10px;flex-wrap:wrap;margin-top:18px;}
 .chip{border:1.5px solid var(--amber);color:var(--amber);border-radius:999px;padding:8px 18px;font-weight:800;font-size:14px;}
 .chip.b{border-color:var(--blue);color:#9fdcff;}
@@ -417,6 +445,27 @@ td.yard{font-weight:700;color:var(--navy);text-align:right;}
 @media(max-width:600px){.massure{flex-direction:column;text-align:center;gap:16px;padding:24px 20px;}}
 .costnote{max-width:960px;margin:30px 0 0;padding:22px 30px;border-left:5px solid var(--amber);background:rgba(234,176,67,.08);border-radius:0 14px 14px 0;color:#c6d1ec;font-size:16.5px;line-height:1.62;}
 .costnote strong{color:#fff;font-weight:800;}
+.aicost{background:linear-gradient(135deg,rgba(1,171,238,.10),rgba(2,148,73,.06));border:1px solid rgba(255,255,255,.14);border-radius:20px;padding:30px 30px 26px;margin-top:34px;}
+.aicost .lead{color:#cfd9f2;font-size:16.5px;max-width:900px;margin-bottom:22px;}
+.aicost .lead b{color:#fff;}
+.aicost .row{display:grid;grid-template-columns:1fr 1fr;gap:20px;}
+@media(max-width:640px){.aicost .row{grid-template-columns:1fr;}}
+.aicost .tile{background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.13);border-radius:16px;padding:22px 24px;}
+.aicost .tile .cl{color:#9fb0d6;font-size:12.5px;font-weight:800;letter-spacing:.6px;text-transform:uppercase;}
+.aicost .tile .cbig{font-size:36px;font-weight:900;line-height:1.05;margin-top:8px;color:var(--amber);}
+.aicost .tile.b .cbig{color:#7ddcff;}
+.aicost .tile .cbig span{font-size:16px;font-weight:700;color:#9fb0d6;}
+.aicost .tile .cx{color:#cfd9f2;font-size:14px;margin-top:7px;}
+.aicost .mvo{margin-top:22px;display:flex;gap:16px;align-items:center;background:rgba(2,148,73,.10);border:1.5px solid rgba(2,148,73,.5);border-radius:14px;padding:18px 22px;color:#e8eefb;font-size:16px;line-height:1.5;}
+.aicost .mvo b{color:#fff;}
+.aicost .mvo strong{color:#7ddba8;}
+.aicost .more{margin-top:16px;font-size:14.5px;}
+.aicost .more a{color:#9fdcff;font-weight:800;text-decoration:none;}
+.hiwband{background:linear-gradient(135deg,#0b2d5e,#0A1B4D 60%,#0a1430);padding:44px 0;border-top:1px solid rgba(255,255,255,.10);}
+.hiwband .rmt{color:#fff;font-size:27px;font-weight:900;letter-spacing:-.4px;}
+.hiwband .rms{color:#b9c6e6;font-size:16px;margin-top:9px;}
+.hiwband .rmbtn{display:inline-block;margin-top:22px;background:transparent;color:#fff;font-weight:900;font-size:17px;border:2px solid var(--amber);border-radius:999px;padding:13px 34px;text-decoration:none;}
+.hiwband .rmbtn:hover{background:var(--amber);color:#31250a;}
 </style>
 </head>
 <body>
@@ -438,7 +487,11 @@ td.yard{font-weight:700;color:var(--navy);text-align:right;}
       <span class="pill live">● Version 1 — running today</span>
       <span class="pill soft">Future Development — AI, defined and approved step by step</span>
     </div>
-    <div class="devnote">📱 💻 &nbsp;Open this on your desktop or your phone — the page, the video, and the portal preview are all built both desktop and mobile-first. <span style="color:var(--green);">This matters: around 80% of OE's team work from a phone or tablet — more on why below.</span></div>
+    <div class="pillrow" style="margin-top:12px;">
+      <a class="pill lnk" href="/ai/how-it-works" target="_blank" rel="noopener">How the AI works →</a>
+      <a class="pill lnk" href="/ai/roadmap" target="_blank" rel="noopener">The 2026/27 roadmap →</a>
+    </div>
+    <div class="devnote" style="margin-top:28px;">📱 💻 &nbsp;Open this on your desktop or your phone — the page, the video, and the portal preview are all built both desktop and mobile-first. <span style="color:var(--green);font-weight:800;">This matters: around 80% of OE's team work from a phone or tablet — more on why below.</span></div>
   </div>
 </div>
 
@@ -512,6 +565,7 @@ td.yard{font-weight:700;color:var(--navy);text-align:right;}
         <h2 style="margin-top:14px;">AI will do the manual work that follows every email</h2>
         <div class="statbig" style="margin-top:30px;">75–90%</div>
         <div class="statlab">faster processing — reported¹</div>
+        <p class="sub" style="margin-top:24px;font-size:18px;color:#e8eefb;">AI will take on the tedious, time-consuming work where people can make errors — <strong style="color:#4fd08a;">allowing the team to focus on what AI cannot do.</strong></p>
       </div>
       <div class="spinewrap">
         <div class="spineline"></div>
@@ -522,7 +576,6 @@ td.yard{font-weight:700;color:var(--navy);text-align:right;}
         <div class="sitem rv"><div class="smedal" style="background:linear-gradient(150deg,var(--amber),#c9902a);"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.4" stroke-linecap="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></div><div><h3 style="color:var(--amber);">MUCH MORE</h3><p>These are only a few examples to dramatically improve productivity</p></div></div>
       </div>
     </div>
-    <p class="sub" style="margin-top:34px;font-size:20px;color:#e8eefb;">AI will take on the tedious, time-consuming work where people can make errors — <strong style="color:#4fd08a;">allowing the team to focus on what AI cannot do.</strong></p>
     <div class="vs">
       <div class="card"><div class="aihead">AI</div>
         <ul><li><strong>Reads</strong> every request the moment it arrives</li>
@@ -597,7 +650,7 @@ td.yard{font-weight:700;color:var(--navy);text-align:right;}
       <div class="msh">
         <svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="var(--amber)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2 4 5v6c0 5 3.5 8.5 8 10 4.5-1.5 8-5 8-10V5l-8-3z"/><path d="M9 12l2 2 4-4"/></svg>
       </div>
-      <p><strong>Built for exactly this.</strong> OE's crews, training, and equipment are complex — and the engine can hold every layer of it, down to <b>customer-specific requirements</b> and <b>"do not assign" lists</b>. It runs <b>quickly, with little to no error — and only ever on the rules OE has put in place.</b></p>
+      <p><strong>Built for exactly this.</strong> OE's crews, training, and equipment are complex — and the engine can hold every layer of it. It runs <b>quickly, with little to no error — and only ever on the rules OE has put in place.</b></p>
     </div>
   </div>
 </section>
@@ -640,7 +693,6 @@ td.yard{font-weight:700;color:var(--navy);text-align:right;}
       <div class="wo"><div class="st"><span><span class="led"></span>CREATED</span><span class="t">in 1.0 s</span></div><div class="num">WO 49715128</div><div class="addr">7914 Jeanne D'Arc Blvd N, Orleans</div><div class="src">Nylus · created automatically</div></div>
       <div class="wo"><div class="st"><span><span class="led"></span>CREATED</span><span class="t">in 1.1 s</span></div><div class="num">WO 49752192</div><div class="addr">542 Lawler Cres, Orleans</div><div class="src">Nylus · created automatically</div></div>
     </div>
-    <div class="callout rv"><strong>And AI keeps them current:</strong> when Enbridge sends an update, the matching Work Order is updated too. Duplicate emails are recognized. Urgent requests are flagged first.</div>
   </div>
 </section>
 
@@ -787,7 +839,7 @@ td.yard{font-weight:700;color:var(--navy);text-align:right;}
   <div class="wrap">
     <div class="kick" style="color:var(--amber);">Much more — where this goes</div>
     <h2>A Customer / Team Portal — one platform for everyone</h2>
-    <p class="plead rv">Beyond dispatch, the same AI foundation makes a Customer / Team Portal possible — one secure, OE-branded platform, built as part of OE's website. Customers see everything about their jobs; OE's team gets its own <strong>Team Hub</strong>. Permissions decide who sees what — and because it's <strong>one platform, every update is made once and appears in the right place automatically.</strong> And it's <strong>built mobile-first</strong> — around 80% of OE's team work from a tablet or phone, so the Team Hub is designed for the field, not the desk.</p>
+    <p class="plead rv">Beyond dispatch, the same AI foundation makes a Customer / Team Portal possible — one secure, OE-branded platform, built as part of OE's website. Customers see everything about their jobs; OE's team gets its own <strong>Team Hub</strong>. Permissions decide who sees what — and because it's <strong>one platform, every update is made once and appears in the right place automatically.</strong></p>
     <div class="pband2 rv" style="border-color:var(--green);background:rgba(2,148,73,.10);margin-top:18px;">Delivered in two phases: <strong style="color:#7ddba8;">Phase 1 (Q4 2026) — the Team Hub</strong>, including the automated Safety Messaging HR has requested; <strong style="color:#7ddba8;">Phase 2 (Q4 2027) — the Customer-facing portal.</strong> Because it's one platform, Phase 1 already advances Phase 2.</div>
     <div class="snlabel rv">THIS IS THE TOP MENU OF OE'S NEW WEBSITE PAGES — WITH CUSTOMER LOGIN DISPLAYED:</div>
     <div class="sitenav rv">
@@ -954,10 +1006,51 @@ td.yard{font-weight:700;color:var(--navy);text-align:right;}
     </div>
     </div><!-- /view-team -->
 
-    <div class="onebar rv"><b>The same platform — a different sign-in.</b> A Customer sees their jobs; an OE team member sees the Team Hub. Update once, and everyone sees only their own view — on whatever device they're using.</div>
-    <div class="pband rv">Update a job once — and it's current everywhere: the Customer's view <em>and</em> the crew's Team Hub.<br><span>One platform, one source of truth — for Customers and for OE's team.</span></div>
-    <div class="pband2 rv">A Customer / Team Portal <strong>deepens Customer relationships</strong>, <strong>speeds up payment</strong>, and <strong>keeps every visit on OE's own website</strong> — while giving the team <strong>automated Safety Messaging</strong>, <strong>a direct line from the CEO</strong>, and <strong>live project updates</strong>, all built once and updated once.<br>
+    <div class="onebar rv"><b>The same platform — a different sign-in.</b> A Customer sees their jobs; an OE team member sees the Team Hub — one source of truth, updated once, and each sees only their own view, on whatever device they're using.</div>
+    <div class="pband2 rv">A Customer / Team Portal <strong>deepens Customer relationships</strong>, <strong>speeds up payment</strong>, and <strong>keeps every visit on OE's own website</strong> — while giving the team <strong>automated Safety Messaging</strong>, <strong>a direct line from the CEO</strong>, and <strong>live project updates</strong>.<br>
     <span class="proc">And like every future capability, it follows the same process: <strong>defined &amp; quoted → approved by OE → verified in testing.</strong></span></div>
+  </div>
+</section>
+
+<!-- ============ BEYOND DISPATCH ============ -->
+<section class="dark" style="padding-top:44px;">
+  <div class="wrap">
+    <div class="kick" style="color:var(--amber);">Beyond dispatch</div>
+    <h2>The same foundation, pointed at the rest of the business</h2>
+    <p class="sub">Dispatch is where OE starts, because dispatch is where the volume is. But the AI is not a dispatch product &mdash; it works with the systems OE already runs. Once the roadmap is in place, the same foundation extends to the areas below.</p>
+    <div class="bdlab">Not on the roadmap dates &mdash; what comes after it</div>
+
+    <div class="bdg">
+      <div class="bdc rv" style="--ac:var(--blue);">
+        <div class="bsys">Nylus &middot; Dispatch &amp; operations</div>
+        <h3>Where the roadmap on this page runs</h3>
+        <p>Work Orders, scheduling, crews and units, safety paperwork &mdash; read, checked against OE&rsquo;s rules, and actioned as the work arrives.</p>
+        <div class="bout">The whole of the 2026/27 roadmap.</div>
+      </div>
+      <div class="bdc rv" style="--ac:var(--green);">
+        <div class="bsys">Sage &middot; Accounting</div>
+        <h3>Completed work matched to what has actually been invoiced</h3>
+        <p>Finished jobs read against the invoices raised, so work that has been done and not yet billed is put in front of the person who does the billing &mdash; with the missing PO or job reference identified. <b style="color:#fff;">It proposes; a person posts.</b></p>
+        <div class="bout">Fewer completed jobs sitting unbilled &mdash; and cash collected sooner.</div>
+      </div>
+      <div class="bdc rv" style="--ac:var(--violet);">
+        <div class="bsys">CRM &middot; Customers &amp; sales</div>
+        <h3>An AI-driven CRM &mdash; doing more, for less</h3>
+        <p>Today the team uses only around 10% of what OE&rsquo;s current CRM offers &mdash; while paying for all of it. An AI-driven CRM could eventually replace it: account reviews, follow-ups and quotes prepared from the job history already in OE&rsquo;s systems, rather than assembled by hand.</p>
+        <div class="bout">A CRM the team actually uses &mdash; at a lower cost.</div>
+      </div>
+    </div>
+
+    <div class="bdask rv">
+      <div class="bq">&ldquo;How are we doing this week?&rdquo;</div>
+      <ul class="bl">
+        <li>Dispatch activity from <b>Nylus</b></li>
+        <li>Financials from <b>Sage</b></li>
+        <li>Customer activity from <b>the CRM</b></li>
+        <li>Fleet utilisation, measured against budget</li>
+      </ul>
+      <div class="bn">One question, four systems, one answer &mdash; each part read only by the people permitted to see it. <b>None of this is built today and none of it is inside the roadmap dates or the costs on this page.</b> It is here because it is what the same foundation extends to, and because it is the reason to build that foundation properly the first time. <a href="/ai/how-it-works" style="color:#9fdcff;font-weight:800;" target="_blank" rel="noopener">See how the AI works &rarr;</a></div>
+    </div>
   </div>
 </section>
 
@@ -971,21 +1064,50 @@ td.yard{font-weight:700;color:var(--navy);text-align:right;}
       <div class="step green"><span class="n">STEP 03 — VERIFIED IN TESTING</span><ul><li>Proven on OE's real work</li><li>Before it goes live</li></ul></div>
     </div>
     <div class="chips" style="justify-content:center;margin-top:26px;">
-      <span class="chip g">75–90% faster processing¹</span>
       <span class="chip g">Safety checked on every job</span>
       <span class="chip g">Customers answered immediately</span>
     </div>
+
+    <div class="aicost rv">
+      <div class="lead">Version 1 today runs on Power Automate — rules only, no AI model — so there's <b>no AI fee yet.</b> The AI cost begins only when the smart capabilities are built. Even then it's billed by usage like a utility, with <b>no software licence to buy</b> — just <b>a few cents per job.</b> At OE's volume:</div>
+      <div class="row">
+        <div class="tile b">
+          <div class="cl">As AI capabilities come online</div>
+          <div class="cbig">~$50–150<span> / month</span></div>
+          <div class="cx">The early AI phases — reading dispatch work, creating Work Orders, and matching crews and units.</div>
+        </div>
+        <div class="tile">
+          <div class="cl">Full roadmap running</div>
+          <div class="cbig">~$300–600<span> / month</span></div>
+          <div class="cx">Everything live — safety checks, every channel, and plain-language answers for the team.</div>
+        </div>
+      </div>
+      <div class="mvo">
+        <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="#7ddba8" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" style="flex-shrink:0;"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg>
+        <div>Even at full build-out, that's <strong>less than one day of a person's admin time each month</strong> — for AI working every hour, across every yard. <b>The cost is minimal; the output is the point.</b></div>
+      </div>
+      <div class="more">Figures are approximate and usage-based (~150 jobs/day). <a href="/ai/how-it-works" target="_blank" rel="noopener">See how the AI works →</a></div>
+    </div>
+
     <div class="costnote rv">
-  <p style="margin:0;">This project is based upon Darren's current contract. Any external costs — for example, Nylus providing costs to integrate with OE's systems — will be evaluated through an investigative meeting. As this work progresses, a business analysis will be maintained as living documents, prioritized using the <strong>MoSCoW method</strong>⁸ — <strong>Must have, Should have, Could have, Won't have.</strong></p>
-  <p style="margin:14px 0 0;">Darren will report to George on this project, with all work carried out alongside the ELT, Kristi, and the respective department heads — ensuring what's delivered is the work the company requires.</p>
-</div>
+      <p style="margin:0;">This project is based upon Darren's current contract. Any external costs — for example, Nylus providing costs to integrate with OE's systems — will be evaluated through an investigative meeting. As this work progresses, a business analysis will be maintained as living documents, prioritized using the <strong>MoSCoW method</strong>⁸ — <strong>Must have, Should have, Could have, Won't have.</strong></p>
+      <p style="margin:14px 0 0;">Darren will report to George on this project, with all work carried out alongside Kristi, the ELT, and the respective department heads — ensuring what's delivered is the work the company requires.</p>
+    </div>
   </div>
 </section>
+
+<div class="hiwband">
+  <div class="wrap" style="text-align:center;">
+    <div class="rmt rv">How the AI works — in plain terms</div>
+    <div class="rms rv">What runs behind the demo — the model, the agent, and OE's own systems — with the full Security &amp; data-integrity detail: how OE's data remains under OE's control. Written in plain terms for the leadership team.</div>
+    <a class="rmbtn rv" href="/ai/how-it-works" target="_blank" rel="noopener">See how it works →</a>
+  </div>
+</div>
 
 <div class="rmband">
   <div class="wrap" style="text-align:center;">
     <div class="rmt rv">The 2026/27 AI Roadmap</div>
-    <div class="rms rv">Every capability above, sequenced quarter by quarter — each step approved by OE before it's built.</div>
+    <div class="rms rv">Every capability above, sequenced quarter by quarter — each step approved by OE before it's built. Next up: Q4 2026 — crews and trucks matched, Customers answered.</div>
     <a class="rmbtn rv" href="/ai/roadmap" target="_blank" rel="noopener">View the roadmap →</a>
   </div>
 </div>
